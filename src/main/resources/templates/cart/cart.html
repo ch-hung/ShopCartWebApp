@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="BIG5">
+<title>CART</title>
+<style>
+.textr {
+	text-align: right;
+}
+</style>
+</head>
+<body>
+	<div id="headder">
+		<h3>CART</h3>
+	</div>
+	<div id="cart">
+		<table>
+			<tr>
+				<td width="80">Name</td>
+				<td class="textr" width="70">Price</td>
+				<td class="textr" width="70">Amount</td>
+				<td class="textr" width="70"></td>
+				<td></td>
+			</tr>
+			<tr th:each="showcart:${SHOWCARTS}">
+				<td><span th:text="${showcart.name}"></span></td>
+				<td class="textr"><span th:text="${showcart.price}"></span></td>
+				<td class="textr"><span th:text="${showcart.amount}"></span></td>
+				<td class="textr"><span th:text="${showcart.total}"></span></td>
+				<td style="text-align: right" width="90">
+					<a th:href="@{'/cart/delete?id=' + ${showcart.cart_id}}">Delete</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+				<td class="textr">Total</td>
+				<td class="textr"><span th:text="${SUM}"></span></td>
+				<td class="textr"><button id="buy" onclick="buy()">Buy All</button></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<div>
+			<a href="/shop">Continue shop</a>
+		</div>
+		<div>
+			<a href="/logout">Log out</a>
+		</div>
+	</div>
+</body>
+<script>
+	function buy() {
+		alert("Buy it! (not implemented yet)")
+	}
+</script>
+</html>

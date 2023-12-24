@@ -21,6 +21,12 @@ public class CartDaoImpl implements CartDao {
 	}
 
 	@Override
+	public Cart queryCart(Integer id) {
+		Cart c = cartMapper.queryCart(id);
+		return c;
+	}
+
+	@Override
 	public List<Cart> queryAll() {
 		List<Cart> cs = cartMapper.queryAll();
 		return cs;

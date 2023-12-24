@@ -4,3 +4,8 @@ Spring + MyBatis + Thymeleaf + MySQL and some JavaScript
 v0 Member System update
 - login
 - signup
+v1 Cart System update
+- shop
+- add cart
+- show cart
+- delete cart

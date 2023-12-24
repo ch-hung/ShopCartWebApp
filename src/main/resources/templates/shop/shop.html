@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="BIG5">
+<title>SHOP</title>
+</head>
+<body>
+	<div id="headder">
+		<h3>SHOP</h3>
+	</div>
+	<div id="goods">
+		<table>
+			<tr>
+				<td style="font-weight: bold" width="80">Name</td>
+				<td width="200">Description</td>
+				<td width="50">Price</td>
+				<td></td>
+			</tr>
+			<tr th:each="good:${GOODS}">
+				<td><span th:text="${good.name}" style="font-weight: bold"></span></td>
+				<td><span th:text="${good.detail}"></span></td>
+				<td><span th:text="${good.price}"></span></td>
+				<td><a th:href="@{'/shop/add?id=' + ${good.id}}">Add to Cart</a></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<div>
+			<a href="/cart">My cart</a>
+		</div>
+		<div>
+			<a href="/logout">Log out</a>
+		</div>
+	</div>
+</body>
+</html>

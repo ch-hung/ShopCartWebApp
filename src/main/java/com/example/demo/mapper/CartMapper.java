@@ -12,9 +12,12 @@ import com.example.demo.vo.Cart;
 
 @Mapper
 public interface CartMapper {
-	@Insert("insert into cart(member_id, good_id, amount) value(#{member_id}, #{good_id}, #{amount}")
+	@Insert("insert into cart(member_id, good_id, amount) value(#{member_id}, #{good_id}, #{amount})")
 	void addCart(Cart c);
 
+	@Select("select * from cart where id=#{id}")
+	Cart queryCart(Integer id);
+	
 	@Select("select * from cart")
 	List<Cart> queryAll();
 

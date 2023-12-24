@@ -9,6 +9,7 @@ public interface CartDao {
 	void addCart(Cart c);
 	
 	// query
+	Cart queryCart(Integer id);
 	List<Cart> queryAll();
 	List<Cart> queryMemberId(Integer member_id);
 	List<Cart> queryGoodId(Integer good_id);

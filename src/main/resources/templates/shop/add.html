@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="BIG5">
+<title>ADD</title>
+</head>
+<body>
+	<div id="headder">
+		<h3>ADD</h3>
+	</div>
+	<div id="good">
+		<div style="font-weight: bold">
+			<span th:text="${GOOD.name}"></span>
+		</div>
+		<div id="good-img">
+			<img src="/img/pic.png">
+		</div>
+		<div id="good-detail">
+			Description: <span th:text="${GOOD.detail}"></span>
+		</div>
+		<div id="good-price">
+			Price: <span th:text="${GOOD.price}"></span>
+		</div>
+		<div>
+			<form action="addS" method="POST">
+			<input type="hidden" name="good_id" th:value="${GOOD.id}">
+				<select id="amount" name="amount">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</select>
+				<input type="submit" value="Add to Cart">
+			</form>
+		</div>
+	</div>
+	<div id="amount"></div>
+	<div>
+		<div>
+			<a href="/shop">Back to Shop</a>
+		</div>
+	</div>
+</body>
+</html>
