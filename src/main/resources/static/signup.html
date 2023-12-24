@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SIGNUP</title>
+</head>
+<body>
+	<div id="headder">
+		<h3>SIGNUP</h3>
+	</div>
+	<div>
+		<form action="signup" method="POST" id="id-form">
+			Username:<br> <input type="text" name="username" id="id-username" onblur="val_u()">
+			<span id="id-username-validate" style="color: red; display: none">Invalid Username. 4-12 characters, no symbol contain</span><br>
+			Password:<br> <input type="password" name="password" id="id-password" onblur="val_p()">
+			<span id="id-password-validate" style="color: red; display: none">Invalid Password. 4-12 characters, no symbol contain</span><br>
+			Name:<br> <input type="text" name="name">
+			<span id="id-name-validate"></span><br>
+			Email:<br> <input type="text" name="email" id="id-email" onblur="val_e()">
+			<span id="id-email-validate" style="color: red; display: none">Invalid Email</span><br> <br>
+			<button id="id-btn-signup" onclick="validate(event)">Signup</button>
+			<br>
+		</form>
+	</div>
+	<div>
+		<div>
+			<br>I already have an account<br> <a href="/login.html">Log
+				in</a>
+		</div>
+	</div>
+</body>
+<script>
+	var	passCount = 0;
+	var myregex = /^[0-9a-zA-Z]{4,12}$/;
+	var emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	
+	// validate username(u), password(p), email(e)
+	function val_u() {
+		val("id-username", "id-username-validate", myregex);
+	}
+	
+	function val_p() {
+		val("id-password", "id-password-validate", myregex);
+	}
+		
+	function val_e() {
+		val("id-email", "id-email-validate", emailregex);
+	}
+	
+	// submit
+	function validate(event) {
+		event.preventDefault();
+		passCount = 0;
+		val_u();
+		val_p();
+		val_e();
+		if (passCount == 3) {
+			document.getElementById("id-form").submit();
+		} else {
+			alert("Please enter valid information");
+		}
+	}
+	
+	// validate process
+	function val(input, span, regex) {
+		var username = document.getElementById(input);
+		var val = document.getElementById(span);
+		if (regex.test(username.value)) {
+			val.style.display="none";
+			passCount += 1;
+		} else {
+			val.style.display="";
+		}
+	}
+</script>
+</html>
