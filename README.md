@@ -11,8 +11,12 @@ Spring + MyBatis + Thymeleaf + MySQL and some JavaScript
 - show cart
 - delete cart
 ### v1.1
-- Improve readability
-- Reduce duplication in signup
+- improve readability
+- reduce duplication in signup
 ### v2
-- Apply basic css
-- Apply jQuery in signup
+- apply basic css
+- apply jQuery in signup
+
+# Something to Improvement
+- add filter to check login status
+- cart edit
