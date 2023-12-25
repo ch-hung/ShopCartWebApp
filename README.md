@@ -13,3 +13,6 @@ Spring + MyBatis + Thymeleaf + MySQL and some JavaScript
 ### v1.1
 - Improve readability
 - Reduce duplication in signup
+### v2
+- Apply basic css
+- Apply jQuery in signup

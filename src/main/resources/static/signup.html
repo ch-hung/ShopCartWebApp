@@ -3,22 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>SIGNUP</title>
+<link rel="stylesheet" href="/css/style.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-	<div id="headder">
+	<div class="header">
 		<h3>SIGNUP</h3>
 	</div>
 	<div>
 		<form action="signup" method="POST" id="id-form">
-			Username:<br> <input type="text" name="username" id="id-username" onblur="val('id-username', 'id-username-validate', myregex)">
-			<span id="id-username-validate" style="color: red; display: none">Invalid Username. 4-12 characters, no symbol contain</span><br>
-			Password:<br> <input type="password" name="password" id="id-password" onblur="val('id-password', 'id-password-validate', myregex)">
-			<span id="id-password-validate" style="color: red; display: none">Invalid Password. 4-12 characters, no symbol contain</span><br>
-			Name:<br> <input type="text" name="name">
-			<span id="id-name-validate"></span><br>
-			Email:<br> <input type="text" name="email" id="id-email" onblur="val('id-email', 'id-email-validate', emailregex)">
-			<span id="id-email-validate" style="color: red; display: none">Invalid Email</span><br> <br>
-			<button id="id-btn-signup" onclick="validate(event)">Signup</button>
+			Username<br> <input type="text" name="username" id="id-username">
+			<br><span id="id-username-validate" class="invalid-text">Invalid Username. 4-12 characters, no symbol contain</span><br>
+			Password<br> <input type="password" name="password" id="id-password">
+			<br><span id="id-password-validate" class="invalid-text">Invalid Password. 4-12 characters, no symbol contain</span><br>
+			Name<br> <input type="text" name="name">
+			<br><span id="id-name-validate"></span><br>
+			Email<br> <input type="text" name="email" id="id-email">
+			<br><span id="id-email-validate" class="invalid-text">Invalid Email</span><br> <br>
+			<button id="id-btn-signup">Signup</button>
 			<br>
 		</form>
 	</div>
@@ -33,21 +35,7 @@
 	var	passCount = 0;
 	var myregex = /^[0-9a-zA-Z]{4,12}$/;
 	var emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	
-	// submit
-	function validate(event) {
-		event.preventDefault();
-		passCount = 0;
-		val("id-username", "id-username-validate", myregex);
-		val("id-password", "id-password-validate", myregex);
-		val("id-email", "id-email-validate", emailregex);
-		if (passCount == 3) {
-			document.getElementById("id-form").submit();
-		} else {
-			alert("Please enter valid information");
-		}
-	}
-	
+		
 	// validate process
 	function val(input, span, regex) {
 		var username = document.getElementById(input);
@@ -59,5 +47,31 @@
 			val.style.display="";
 		}
 	}
+	
+	// validate bind
+	// replace onblur="val('id-XXX', 'id-XXX-validate', myregex)"
+	$("#id-username").bind("blur", ()=> {val("id-username", "id-username-validate", myregex)});
+	$("#id-password").bind("blur", ()=> {val("id-password", "id-password-validate", myregex)});
+	$("#id-email").bind("blur", ()=> {val("id-email", "id-email-validate", emailregex)});
+	
+	// validate and submit
+	// replace onclick="validate(event)"
+	$("#id-btn-signup").bind("click", ()=> {
+		event.preventDefault();
+		passCount = 0;
+		val("id-username", "id-username-validate", myregex);
+		val("id-password", "id-password-validate", myregex);
+		val("id-email", "id-email-validate", emailregex);
+		if (passCount == 3) {
+			document.getElementById("id-form").submit();
+		} else {
+			alert("Please enter valid information");
+	}});
+
+	// invalid text
+	$(".invalid-text").css({
+		"color": "red",
+		"display": "none"
+	});
 </script>
 </html>
