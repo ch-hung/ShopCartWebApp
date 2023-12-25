@@ -30,7 +30,7 @@ public class CartController {
 	@Autowired
 	HttpSession session;
 
-	@GetMapping("/shop/add")
+	@GetMapping("/shop/shop/add")
 	public ModelAndView add(Integer id, Model m) {
 		ModelAndView mav = new ModelAndView("shop/add");
 		Good g = gdi.queryId(id);
@@ -38,7 +38,7 @@ public class CartController {
 		return mav;
 	}
 	
-	@PostMapping("/shop/addS")
+	@PostMapping("/shop/shop/addS")
 	public ModelAndView addS(Integer good_id, Integer amount) {
 		ModelAndView mav = new ModelAndView("shop/addSuccess");
 		Member m = (Member)session.getAttribute("MEMBER");
@@ -46,9 +46,9 @@ public class CartController {
 		return mav;
 	}
 	
-	@GetMapping("/cart/delete")
+	@GetMapping("/shop/cart/delete")
 	public ModelAndView delete(Integer id) {
-		ModelAndView mav = new ModelAndView("cart/delete");
+		ModelAndView mav = new ModelAndView("shop/cart/delete");
 		cdi.deleteCart(id);
 		return mav;		
 	}

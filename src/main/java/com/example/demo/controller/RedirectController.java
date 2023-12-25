@@ -33,7 +33,7 @@ public class RedirectController {
 	@Autowired
 	HttpSession session;
 	
-	@GetMapping("/shop")
+	@GetMapping("/shop/shop")
 	public ModelAndView shop(Model m) {
 		ModelAndView mav = new ModelAndView("shop/shop");
 		List<Good> goods = gdi.queryAll();
@@ -41,9 +41,9 @@ public class RedirectController {
 		return mav;
 	}
 
-	@GetMapping("/cart")
+	@GetMapping("/shop/cart")
 	public ModelAndView cart(Model m) {
-		ModelAndView mav = new ModelAndView("cart/cart");
+		ModelAndView mav = new ModelAndView("shop/cart/cart");
 		Member m1 = (Member)session.getAttribute("MEMBER");
 		// Form a list form cart display
 		List<Cart> cs = cdi.queryMemberId(m1.getId());

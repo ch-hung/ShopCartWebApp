@@ -10,3 +10,6 @@ Spring + MyBatis + Thymeleaf + MySQL and some JavaScript
 - add cart
 - show cart
 - delete cart
+### v1.1
+- Improve readability
+- Reduce duplication in signup

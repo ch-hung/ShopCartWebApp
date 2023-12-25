@@ -20,13 +20,13 @@
 				<td><span th:text="${good.name}" style="font-weight: bold"></span></td>
 				<td><span th:text="${good.detail}"></span></td>
 				<td><span th:text="${good.price}"></span></td>
-				<td><a th:href="@{'/shop/add?id=' + ${good.id}}">Add to Cart</a></td>
+				<td><a th:href="@{'/shop/shop/add?id=' + ${good.id}}">Add to Cart</a></td>
 			</tr>
 		</table>
 	</div>
 	<div>
 		<div>
-			<a href="/cart">My cart</a>
+			<a href="/shop/cart">My cart</a>
 		</div>
 		<div>
 			<a href="/logout">Log out</a>
