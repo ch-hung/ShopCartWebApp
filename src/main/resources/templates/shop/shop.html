@@ -18,10 +18,10 @@
 				<td></td>
 			</tr>
 			<tr th:each="good:${GOODS}">
-				<td><span th:text="${good.name}" style="font-weight: bold"></span></td>
-				<td><span th:text="${good.detail}"></span></td>
-				<td><span th:text="${good.price}"></span></td>
-				<td><a th:href="@{'/shop/shop/add?id=' + ${good.id}}">Add to Cart</a></td>
+				<td><span th:text="${good.good_name}" style="font-weight: bold"></span></td>
+				<td><span th:text="${good.good_detail}"></span></td>
+				<td><span th:text="${good.good_price}"></span></td>
+				<td><a th:href="@{'/shop/shop/add?good_id=' + ${good.good_id}}">Add to Cart</a></td>
 			</tr>
 		</table>
 	</div>

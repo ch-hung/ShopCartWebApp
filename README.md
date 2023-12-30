@@ -16,6 +16,8 @@ Spring + MyBatis + Thymeleaf + MySQL and some JavaScript
 ### v2
 - apply basic css
 - apply jQuery in signup
+### v3
+- improve cart (with new view "showcart" and vo)
 
 # Something to Improvement
 - add filter to check login status

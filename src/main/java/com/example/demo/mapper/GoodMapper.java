@@ -10,12 +10,12 @@ import com.example.demo.vo.Good;
 
 @Mapper
 public interface GoodMapper {
-	@Insert("insert into good(name. detail, price) value(#{name}, #{detail}, #{price}")
+	@Insert("insert into good(good_name, good_detail, good_price) value(#{good_name}, #{good_detail}, #{good_price}")
 	void addGood(Good g);
 	
 	@Select("select * from good")
 	List<Good> queryAll();
 	
-	@Select("select * from good where id=#{id}")
-	Good queryId(Integer id);
+	@Select("select * from good where good_id=#{good_id}")
+	Good queryId(Integer good_id);
 }

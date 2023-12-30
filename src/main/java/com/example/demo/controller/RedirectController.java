@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.service.impl.CartDaoImpl;
 import com.example.demo.service.impl.GoodDaoImpl;
 import com.example.demo.service.impl.MemberDaoImpl;
-import com.example.demo.vo.Cart;
+import com.example.demo.service.impl.ShowcartDaoImpl;
 import com.example.demo.vo.Good;
 import com.example.demo.vo.Member;
-import com.example.demo.vo.ShowCart;
+import com.example.demo.vo.Showcart;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -29,6 +28,9 @@ public class RedirectController {
 
 	@Autowired
 	MemberDaoImpl mdi;
+	
+	@Autowired
+	ShowcartDaoImpl sdi;
 
 	@Autowired
 	HttpSession session;
@@ -46,17 +48,12 @@ public class RedirectController {
 		ModelAndView mav = new ModelAndView("shop/cart/cart");
 		Member m1 = (Member)session.getAttribute("MEMBER");
 		// Form a list form cart display
-		List<Cart> cs = cdi.queryMemberId(m1.getId());
-		List<ShowCart> scs = new ArrayList<>();
+		List<Showcart> ss = sdi.queryMemberId(m1.getMember_id());
 		int sum = 0;
-		for (int i = 0; i < cs.size(); i++) {
-			Cart c = cs.get(i);
-			Good g = gdi.queryId(c.getGood_id());
-			ShowCart sc = new ShowCart(c.getId(), g.getName(), c.getAmount(), g.getPrice(), 0);
-			scs.add(sc);
-			sum += sc.getTotal();
+		for(int i = 0; i < ss.size(); i++) {
+			sum += ss.get(i).getShowcart_total();
 		}
-		m.addAttribute("SHOWCARTS", scs);
+		m.addAttribute("SHOWCARTS", ss);
 		m.addAttribute("SUM", sum);
 		return mav;
 	}

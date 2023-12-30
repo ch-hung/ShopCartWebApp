@@ -4,52 +4,52 @@ import lombok.Data;
 
 @Data
 public class Good {
-	private Integer id;
-	private String name;
-	private String detail;
-	private Integer price;
+	private Integer good_id;
+	private String good_name;
+	private String good_detail;
+	private Integer good_price;
 
 	public Good() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Good(String name, String detail, Integer price) {
+	public Good(String good_name, String good_detail, Integer good_price) {
 		super();
-		this.name = name;
-		this.detail = detail;
-		this.price = price;
+		this.good_name = good_name;
+		this.good_detail = good_detail;
+		this.good_price = good_price;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getGood_id() {
+		return good_id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setGood_id(Integer good_id) {
+		this.good_id = good_id;
 	}
 
-	public String getName() {
-		return name;
+	public String getGood_name() {
+		return good_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setGood_name(String good_name) {
+		this.good_name = good_name;
 	}
 
-	public String getDetail() {
-		return detail;
+	public String getGood_detail() {
+		return good_detail;
 	}
 
-	public void setDetail(String detail) {
-		this.detail = detail;
+	public void setGood_detail(String good_detail) {
+		this.good_detail = good_detail;
 	}
 
-	public Integer getPrice() {
-		return price;
+	public Integer getGood_price() {
+		return good_price;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setGood_price(Integer good_price) {
+		this.good_price = good_price;
 	}
 }

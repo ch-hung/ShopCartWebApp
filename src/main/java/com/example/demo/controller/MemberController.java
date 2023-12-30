@@ -23,7 +23,7 @@ public class MemberController {
 	@PostMapping("/login")
 	public ModelAndView login(@ModelAttribute("Member") Member m) {
 		ModelAndView mav = new ModelAndView();
-		Member m1 = mdi.queryMember(m.getUsername(), m.getPassword());
+		Member m1 = mdi.queryMember(m.getMember_username(), m.getMember_password());
 		if (m1 == null) {
 			mav.setViewName("loginError");
 		} else {
@@ -37,7 +37,7 @@ public class MemberController {
 	public ModelAndView signup(@ModelAttribute("Member") Member m) {
 		ModelAndView mav = new ModelAndView();
 		// username not exit -> success
-		if (mdi.queryUsername(m.getUsername())) {
+		if (mdi.queryUsername(m.getMember_username())) {
 			mdi.addMember(m);
 			mav.setViewName("signupSuccess");
 		} else {

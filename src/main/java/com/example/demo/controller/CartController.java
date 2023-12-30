@@ -31,25 +31,25 @@ public class CartController {
 	HttpSession session;
 
 	@GetMapping("/shop/shop/add")
-	public ModelAndView add(Integer id, Model m) {
+	public ModelAndView add(Integer good_id, Model m) {
 		ModelAndView mav = new ModelAndView("shop/add");
-		Good g = gdi.queryId(id);
+		Good g = gdi.queryId(good_id);
 		m.addAttribute("GOOD", g);
 		return mav;
 	}
 	
 	@PostMapping("/shop/shop/addS")
-	public ModelAndView addS(Integer good_id, Integer amount) {
+	public ModelAndView addS(Integer good_id, Integer cart_amount) {
 		ModelAndView mav = new ModelAndView("shop/addSuccess");
 		Member m = (Member)session.getAttribute("MEMBER");
-		cdi.addCart(new Cart(m.getId(), good_id, amount));
+		cdi.addCart(new Cart(m.getMember_id(), good_id, cart_amount));
 		return mav;
 	}
 	
 	@GetMapping("/shop/cart/delete")
-	public ModelAndView delete(Integer id) {
+	public ModelAndView delete(Integer cart_id) {
 		ModelAndView mav = new ModelAndView("shop/cart/delete");
-		cdi.deleteCart(id);
+		cdi.deleteCart(cart_id);
 		return mav;		
 	}
 }

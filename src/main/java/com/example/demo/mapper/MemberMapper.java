@@ -8,13 +8,13 @@ import com.example.demo.vo.Member;
 
 @Mapper
 public interface MemberMapper {
-	@Insert("insert into member(username, password, name, email) "
-			+ "value(#{username}, #{password}, #{name}, #{email})")
+	@Insert("insert into member(member_username, member_password, member_name, member_email) "
+			+ "value(#{member_username}, #{member_password}, #{member_name}, #{member_email})")
 	void addMember(Member m);
 	
-	@Select("select * from member where username=#{username} and password=#{password}")
-	Member queryMember(String username, String password);
+	@Select("select * from member where member_username=#{member_username} and member_password=#{member_password}")
+	Member queryMember(String member_username, String member_password);
 	
-	@Select("select * from member where username=#{username}")
-	Member queryUsername(String username);
+	@Select("select * from member where member_username=#{member_username}")
+	Member queryUsername(String member_username);
 }

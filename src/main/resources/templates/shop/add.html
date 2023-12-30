@@ -11,21 +11,21 @@
 	</div>
 	<div id="good">
 		<div style="font-weight: bold">
-			<span th:text="${GOOD.name}"></span>
+			<span th:text="${GOOD.good_name}"></span>
 		</div>
 		<div id="good-img">
 			<img src="/img/pic.png">
 		</div>
 		<div id="good-detail">
-			Description: <span th:text="${GOOD.detail}"></span>
+			Description: <span th:text="${GOOD.good_detail}"></span>
 		</div>
 		<div id="good-price">
-			Price: <span th:text="${GOOD.price}"></span>
+			Price: <span th:text="${GOOD.good_price}"></span>
 		</div>
 		<div>
 			<form action="addS" method="POST">
-			<input type="hidden" name="good_id" th:value="${GOOD.id}">
-				<select id="amount" name="amount">
+			<input type="hidden" name="good_id" th:value="${GOOD.good_id}">
+				<select id="amount" name="cart_amount">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>

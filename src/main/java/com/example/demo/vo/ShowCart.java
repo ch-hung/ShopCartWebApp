@@ -4,25 +4,28 @@ import lombok.Data;
 
 // NOT IN DATABASE
 @Data
-public class ShowCart {
+public class Showcart {
 	private Integer cart_id;
-	private String name;
-	private Integer amount;
-	private Integer price;
-	private Integer total;
+	private Integer member_id;
+	private String good_name;
+	private Integer good_price;
+	private Integer cart_amount;
+	private Integer showcart_total;
 
-	public ShowCart() {
+	public Showcart() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ShowCart(Integer cart_id, String name, Integer amount, Integer price, Integer total) {
+	public Showcart(Integer cart_id, Integer member_id, String good_name, Integer good_price, Integer cart_amount,
+			Integer showcart_total) {
 		super();
 		this.cart_id = cart_id;
-		this.name = name;
-		this.amount = amount;
-		this.price = price;
-		total = amount * price;
+		this.member_id = member_id;
+		this.good_name = good_name;
+		this.good_price = good_price;
+		this.cart_amount = cart_amount;
+		this.showcart_total = showcart_total;
 	}
 
 	public Integer getCart_id() {
@@ -33,37 +36,43 @@ public class ShowCart {
 		this.cart_id = cart_id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getMember_id() {
+		return member_id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMember_id(Integer member_id) {
+		this.member_id = member_id;
 	}
 
-	public Integer getAmount() {
-		return amount;
+	public String getGood_name() {
+		return good_name;
 	}
 
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setGood_name(String good_name) {
+		this.good_name = good_name;
 	}
 
-	public Integer getPrice() {
-		return price;
+	public Integer getGood_price() {
+		return good_price;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setGood_price(Integer good_price) {
+		this.good_price = good_price;
 	}
 
-	public Integer getTotal() {
-		total = amount * price;
-		return total;
+	public Integer getCart_amount() {
+		return cart_amount;
 	}
 
-	public void setTotal(Integer total) {
-		this.total = total;
+	public void setCart_amount(Integer cart_amount) {
+		this.cart_amount = cart_amount;
 	}
 
+	public Integer getShowcart_total() {
+		return showcart_total;
+	}
+
+	public void setShowcart_total(Integer showcart_total) {
+		this.showcart_total = showcart_total;
+	}
 }

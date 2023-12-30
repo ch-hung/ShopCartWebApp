@@ -5,62 +5,62 @@ import lombok.Data;
 @Data
 public class Member {
 
-	private Integer id;
-	private String username;
-	private String password;
-	private String name;
-	private String email;
+	private Integer member_id;
+	private String member_username;
+	private String member_password;
+	private String member_name;
+	private String member_email;
 
 	public Member() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String username, String password, String name, String email) {
+	public Member(String member_username, String member_password, String member_name, String member_email) {
 		super();
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.email = email;
+		this.member_username = member_username;
+		this.member_password = member_password;
+		this.member_name = member_name;
+		this.member_email = member_email;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getMember_id() {
+		return member_id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setMember_id(Integer member_id) {
+		this.member_id = member_id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getMember_username() {
+		return member_username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setMember_username(String member_username) {
+		this.member_username = member_username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getMember_password() {
+		return member_password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setMember_password(String member_password) {
+		this.member_password = member_password;
 	}
 
-	public String getName() {
-		return name;
+	public String getMember_name() {
+		return member_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMember_email() {
+		return member_email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
 }

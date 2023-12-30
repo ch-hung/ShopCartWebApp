@@ -17,19 +17,19 @@
 	<div id="cart">
 		<table>
 			<tr>
-				<td width="80">Name</td>
+				<td width="80">Good_Name</td>
 				<td class="textr" width="70">Price</td>
 				<td class="textr" width="70">Amount</td>
 				<td class="textr" width="70"></td>
 				<td></td>
 			</tr>
 			<tr th:each="showcart:${SHOWCARTS}">
-				<td><span th:text="${showcart.name}"></span></td>
-				<td class="textr"><span th:text="${showcart.price}"></span></td>
-				<td class="textr"><span th:text="${showcart.amount}"></span></td>
-				<td class="textr"><span th:text="${showcart.total}"></span></td>
+				<td><span th:text="${showcart.good_name}"></span></td>
+				<td class="textr"><span th:text="${showcart.good_price}"></span></td>
+				<td class="textr"><span th:text="${showcart.cart_amount}"></span></td>
+				<td class="textr"><span th:text="${showcart.showcart_total}"></span></td>
 				<td style="text-align: right" width="90">
-					<a th:href="@{'/shop/cart/delete?id=' + ${showcart.cart_id}}">Delete</a>
+					<a th:href="@{'/shop/cart/delete?cart_id=' + ${showcart.cart_id}}">Delete</a>
 				</td>
 			</tr>
 			<tr height="50">

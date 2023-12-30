@@ -12,10 +12,10 @@ import com.example.demo.vo.Cart;
 
 @Mapper
 public interface CartMapper {
-	@Insert("insert into cart(member_id, good_id, amount) value(#{member_id}, #{good_id}, #{amount})")
+	@Insert("insert into cart(member_id, good_id, cart_amount) value(#{member_id}, #{good_id}, #{cart_amount})")
 	void addCart(Cart c);
 
-	@Select("select * from cart where id=#{id}")
+	@Select("select * from cart where cart_id=#{cart_id}")
 	Cart queryCart(Integer id);
 	
 	@Select("select * from cart")
@@ -27,9 +27,9 @@ public interface CartMapper {
 	@Select("select * from cart where good_id=#{good_id}")
 	List<Cart> queryGoodId(Integer good_id);
 
-	@Update("update cart set amount=#{amount} where id=#{id}")
+	@Update("update cart set cart_amount=#{cart_amount} where cart_id=#{cart_id}")
 	void updateCart(Cart c);
 
-	@Delete("delete from cart where id=#{id}")
+	@Delete("delete from cart where cart_id=#{cart_id}")
 	void deleteCart(Integer id);
 }
