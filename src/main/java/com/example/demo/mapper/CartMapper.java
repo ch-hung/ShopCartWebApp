@@ -26,6 +26,9 @@ public interface CartMapper {
 
 	@Select("select * from cart where good_id=#{good_id}")
 	List<Cart> queryGoodId(Integer good_id);
+	
+	@Select("select * from cart where member_id=#{member_id} and good_id=#{good_id}")
+	Cart queryMemberGoodId(Integer member_id, Integer good_id);
 
 	@Update("update cart set cart_amount=#{cart_amount} where cart_id=#{cart_id}")
 	void updateCart(Cart c);

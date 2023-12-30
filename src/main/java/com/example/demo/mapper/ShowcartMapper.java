@@ -10,6 +10,6 @@ import com.example.demo.vo.Showcart;
 @Mapper
 public interface ShowcartMapper {
 
-	@Select("select * from showcart where member_id=#{member_id}")
+	@Select("select * from showcart where member_id=#{member_id} order by good_name")
 	List<Showcart> queryMemberId(Integer member_id);
 }

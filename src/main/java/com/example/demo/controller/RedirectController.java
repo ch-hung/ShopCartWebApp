@@ -47,7 +47,6 @@ public class RedirectController {
 	public ModelAndView cart(Model m) {
 		ModelAndView mav = new ModelAndView("shop/cart/cart");
 		Member m1 = (Member)session.getAttribute("MEMBER");
-		// Form a list form cart display
 		List<Showcart> ss = sdi.queryMemberId(m1.getMember_id());
 		int sum = 0;
 		for(int i = 0; i < ss.size(); i++) {

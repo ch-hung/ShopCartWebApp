@@ -16,7 +16,13 @@ public class CartDaoImpl implements CartDao {
 
 	@Override
 	public void addCart(Cart c) {
-		cartMapper.addCart(c);
+		Cart c0 = cartMapper.queryMemberGoodId(c.getMember_id(), c.getGood_id());
+		if (c0 == null) {
+			cartMapper.addCart(c);
+		} else {
+			c0.setCart_amount(c0.getCart_amount() + c.getCart_amount());
+			cartMapper.updateCart(c0);
+		}
 		return;
 	}
 
