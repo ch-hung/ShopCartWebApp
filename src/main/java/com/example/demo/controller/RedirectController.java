@@ -13,6 +13,7 @@ import com.example.demo.service.impl.GoodDaoImpl;
 import com.example.demo.service.impl.MemberDaoImpl;
 import com.example.demo.service.impl.ShowcartDaoImpl;
 import com.example.demo.vo.Good;
+import com.example.demo.vo.Member;
 import com.example.demo.vo.Showcart;
 
 import jakarta.servlet.http.HttpSession;
@@ -27,13 +28,13 @@ public class RedirectController {
 
 	@Autowired
 	MemberDaoImpl mdi;
-	
+
 	@Autowired
 	ShowcartDaoImpl sdi;
 
 	@Autowired
 	HttpSession session;
-	
+
 	@GetMapping("/shop/shop")
 	public ModelAndView shop(Model m) {
 		ModelAndView mav = new ModelAndView("shop/shop");
@@ -45,10 +46,10 @@ public class RedirectController {
 	@GetMapping("/shop/cart")
 	public ModelAndView cart(Model m) {
 		ModelAndView mav = new ModelAndView("shop/cart/cart");
-		Integer m1 = (Integer)session.getAttribute("MEMBER_ID");
-		List<Showcart> ss = sdi.queryMemberId(m1);
+		Member m1 = (Member) session.getAttribute("MEMBER");
+		List<Showcart> ss = sdi.queryMemberId(m1.getMember_id());
 		int sum = 0;
-		for(int i = 0; i < ss.size(); i++) {
+		for (int i = 0; i < ss.size(); i++) {
 			sum += ss.get(i).getShowcart_total();
 		}
 		m.addAttribute("SHOWCARTS", ss);

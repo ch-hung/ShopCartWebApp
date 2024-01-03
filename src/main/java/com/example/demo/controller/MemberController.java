@@ -31,7 +31,8 @@ public class MemberController {
 		Member m1 = mdi.queryUsername(m.getMember_username());
 		if (passwordEncoder.matches(m.getMember_password(), m1.getMember_password())) {
 			mav.setViewName("loginSuccess");
-			session.setAttribute("MEMBER_ID", m1.getMember_id());
+			m1.setMember_password(null);
+			session.setAttribute("MEMBER", m1);
 		} else {
 			mav.setViewName("loginError");
 		}
@@ -56,7 +57,7 @@ public class MemberController {
 	@GetMapping("/logout")
 	public ModelAndView logout() {
 		ModelAndView mav = new ModelAndView("logout");
-		session.removeAttribute("MEMBER_ID");
+		session.removeAttribute("MEMBER");
 		return mav;
 	}
 }

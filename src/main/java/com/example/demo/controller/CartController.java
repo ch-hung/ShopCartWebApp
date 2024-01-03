@@ -12,6 +12,7 @@ import com.example.demo.service.impl.GoodDaoImpl;
 import com.example.demo.service.impl.MemberDaoImpl;
 import com.example.demo.vo.Cart;
 import com.example.demo.vo.Good;
+import com.example.demo.vo.Member;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -36,19 +37,19 @@ public class CartController {
 		m.addAttribute("GOOD", g);
 		return mav;
 	}
-	
+
 	@PostMapping("/shop/shop/addS")
 	public ModelAndView addS(Integer good_id, Integer cart_amount) {
 		ModelAndView mav = new ModelAndView("shop/addSuccess");
-		Integer m1 = (Integer)session.getAttribute("MEMBER_ID");
-		cdi.addCart(new Cart(m1, good_id, cart_amount));
+		Member m1 = (Member) session.getAttribute("MEMBER");
+		cdi.addCart(new Cart(m1.getMember_id(), good_id, cart_amount));
 		return mav;
 	}
-	
+
 	@GetMapping("/shop/cart/delete")
 	public ModelAndView delete(Integer cart_id) {
 		ModelAndView mav = new ModelAndView("shop/cart/delete");
 		cdi.deleteCart(cart_id);
-		return mav;		
+		return mav;
 	}
 }
