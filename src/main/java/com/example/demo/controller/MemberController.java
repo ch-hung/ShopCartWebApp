@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,16 +21,19 @@ public class MemberController {
 	
 	@Autowired
 	HttpSession session;
+	
+	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@PostMapping("/login")
 	public ModelAndView login(@ModelAttribute("Member") Member m) {
 		ModelAndView mav = new ModelAndView();
-		Member m1 = mdi.queryMember(m.getMember_username(), m.getMember_password());
-		if (m1 == null) {
-			mav.setViewName("loginError");
-		} else {
+		
+		Member m1 = mdi.queryUsername(m.getMember_username());
+		if (passwordEncoder.matches(m.getMember_password(), m1.getMember_password())) {
 			mav.setViewName("loginSuccess");
-			session.setAttribute("MEMBER", m1);
+			session.setAttribute("MEMBER_ID", m1.getMember_id());
+		} else {
+			mav.setViewName("loginError");
 		}
 		return mav;
 	}
@@ -37,20 +42,21 @@ public class MemberController {
 	public ModelAndView signup(@ModelAttribute("Member") Member m) {
 		ModelAndView mav = new ModelAndView();
 		// username not exit -> success
-		if (mdi.queryUsername(m.getMember_username())) {
+		if (mdi.queryUsername(m.getMember_username()) == null) {
+			String encodedPassword = passwordEncoder.encode(m.getMember_password());
+			m.setMember_password(encodedPassword);
 			mdi.addMember(m);
 			mav.setViewName("signupSuccess");
 		} else {
 			mav.setViewName("signupError");
 		}
-		
 		return mav;
 	}
 	
 	@GetMapping("/logout")
 	public ModelAndView logout() {
 		ModelAndView mav = new ModelAndView("logout");
-		session.removeAttribute("MEMBER");
+		session.removeAttribute("MEMBER_ID");
 		return mav;
 	}
 }

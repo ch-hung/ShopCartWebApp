@@ -12,7 +12,6 @@ import com.example.demo.service.impl.GoodDaoImpl;
 import com.example.demo.service.impl.MemberDaoImpl;
 import com.example.demo.vo.Cart;
 import com.example.demo.vo.Good;
-import com.example.demo.vo.Member;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -41,8 +40,8 @@ public class CartController {
 	@PostMapping("/shop/shop/addS")
 	public ModelAndView addS(Integer good_id, Integer cart_amount) {
 		ModelAndView mav = new ModelAndView("shop/addSuccess");
-		Member m = (Member)session.getAttribute("MEMBER");
-		cdi.addCart(new Cart(m.getMember_id(), good_id, cart_amount));
+		Integer m1 = (Integer)session.getAttribute("MEMBER_ID");
+		cdi.addCart(new Cart(m1, good_id, cart_amount));
 		return mav;
 	}
 	

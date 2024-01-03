@@ -9,6 +9,6 @@ public interface MemberDao {
 	//	query
 	Member queryMember(String username, String password);
 
-	boolean queryUsername(String username);
+	Member queryUsername(String username);
 
 }

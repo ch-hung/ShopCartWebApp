@@ -20,6 +20,10 @@ Spring + MyBatis + Thymeleaf + MySQL and some JavaScript
 - improve cart (with new view "showcart" and vo)
 ### v3.1
 - improve cart "add"
+### v4
+- security update
+- implements BCryptPasswordEncoder
+- change a HttpSesseion for security
 
 # Something to Improvement
 - add filter to check login status

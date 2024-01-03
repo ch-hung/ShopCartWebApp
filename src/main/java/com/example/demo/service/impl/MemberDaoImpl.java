@@ -25,11 +25,8 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public boolean queryUsername(String username) {
-		if (memberMapper.queryUsername(username) != null) {
-			return false;
-		} else {
-			return true;
-		}
+	public Member queryUsername(String username) {
+		Member m = memberMapper.queryUsername(username);
+		return m;
 	}
 }
