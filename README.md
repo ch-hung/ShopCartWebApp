@@ -28,5 +28,5 @@ Spring + MyBatis + Thymeleaf + MySQL and some JavaScript
 - add filter to check login status
 - cart edit
 
-# Instruction PPT (v2)
+# Instruction PPT (v4)
 - https://docs.google.com/presentation/d/1oWsOLxqnRee0dRkQdK1m5OTYXgnLs3W74S3qfoiIar4/edit?usp=drive_link
