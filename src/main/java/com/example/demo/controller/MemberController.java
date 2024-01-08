@@ -18,23 +18,31 @@ import jakarta.servlet.http.HttpSession;
 public class MemberController {
 	@Autowired
 	MemberDaoImpl mdi;
-	
+
 	@Autowired
 	HttpSession session;
-	
+
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@PostMapping("/login")
 	public ModelAndView login(@ModelAttribute("Member") Member m) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		Member m1 = mdi.queryUsername(m.getMember_username());
-		if (passwordEncoder.matches(m.getMember_password(), m1.getMember_password())) {
-			mav.setViewName("loginSuccess");
-			m1.setMember_password(null);
-			session.setAttribute("MEMBER", m1);
-		} else {
+
+		if (m1 == null) {
+			// no such username
 			mav.setViewName("loginError");
+		} else {
+			if (passwordEncoder.matches(m.getMember_password(), m1.getMember_password())) {
+				// login success
+				mav.setViewName("loginSuccess");
+				m1.setMember_password(null);
+				session.setAttribute("MEMBER", m1);
+			} else {
+				// wrong password
+				mav.setViewName("loginError");
+			}
 		}
 		return mav;
 	}
@@ -53,7 +61,7 @@ public class MemberController {
 		}
 		return mav;
 	}
-	
+
 	@GetMapping("/logout")
 	public ModelAndView logout() {
 		ModelAndView mav = new ModelAndView("logout");

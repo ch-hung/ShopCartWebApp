@@ -23,6 +23,8 @@ Spring + MyBatis + Thymeleaf + MySQL and some JavaScript
 ### v4 Security update
 - implements BCryptPasswordEncoder
 - change a HttpSesseion for security
+### v4.1
+- bug fixed: login with unknown username
 
 # Something to Improvement
 - add filter to check login status
